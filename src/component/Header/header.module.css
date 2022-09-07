@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  padding: 1.5em;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+.header__logo {
+  width: 80px;
+  height: fit-content;
+}
+
+.header__nav > ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.header__nav > ul > li {
+  display: inline-block;
+  margin-right: 1.5em;
+}
+.header__nav > ul > li:last-child {
+  margin-right: 0;
+}
