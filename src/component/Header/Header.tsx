@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Hamburger from "./Hamburger";
 import Overlay from "./Overlay";
+import path from "path";
 
 const navigation = [
   {
@@ -40,22 +41,19 @@ const Header = () => {
       <Overlay isExpanded={isExpanded}>
         <div className={styles["overlay"]}>
           <ul
-            className={`${styles["nav__links"]} ${styles["nav__links--mobile"]}`}
+            className={`${styles["nav__list"]} ${styles["nav__list--mobile"]}`}
           >
             {navigation.map(({ label, link }) => (
-              <li key={link}>
-                <Link
-                  to={link}
-                  onClick={onToggle}
-                  className={`${styles["link"]} ${
-                    pathname === link
-                      ? styles["link--selected"]
-                      : styles["link-inactive"]
-                  }`}
-                >
-                  {label}
-                </Link>
-              </li>
+              <Link
+                key={link}
+                to={link}
+                onClick={onToggle}
+                className={`${styles["nav__link"]} ${
+                  pathname === link && styles["nav__link--selected"]
+                }`}
+              >
+                <li>{label}</li>
+              </Link>
             ))}
           </ul>
         </div>
@@ -67,7 +65,7 @@ const Header = () => {
         </div>
 
         <ul
-          className={`${styles["nav__links"]} ${styles["nav__links--desktop"]}`}
+          className={`${styles["nav__list"]} ${styles["nav__list--desktop"]}`}
         >
           {navigation.map(({ label, link }) => (
             <li key={link}>
