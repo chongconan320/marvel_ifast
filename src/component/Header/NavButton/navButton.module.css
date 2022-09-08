@@ -1,11 +1,11 @@
 .navButton {
-  padding: 0.5em 1.5em;
+  padding: 0.5em 1em;
   border: 0;
   border-radius: 5px;
   text-decoration: none;
 }
 .navButton--selected {
-  background-color: rgb(var(--primary));
+  background-color: rgb(var(--primary)) !important;
 }
 .navButton--inactive {
   background-color: rgb(var(--inactive-nav-button));
@@ -14,6 +14,7 @@
 .navButton__label {
   position: relative;
   text-transform: uppercase;
+  font-size: 0.8rem;
 }
 .navButton__label--selected {
   font-weight: bold;
@@ -23,7 +24,7 @@
   color: rgb(var(--black));
 }
 
-.navButton__label::after {
+.navButton--inactive .navButton__label::after {
   content: "";
   position: absolute;
   background-color: transparent;

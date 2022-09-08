@@ -1,8 +1,9 @@
-import { AnchorHTMLAttributes, ReactNode } from "react";
+import { ReactNode } from "react";
+import { Link, LinkProps } from "react-router-dom";
 
 import styles from "./navButton.module.css";
 
-interface INavButton extends AnchorHTMLAttributes<HTMLAnchorElement> {
+interface INavButton extends LinkProps {
   children: ReactNode;
   selected?: boolean;
 }
@@ -10,11 +11,11 @@ interface INavButton extends AnchorHTMLAttributes<HTMLAnchorElement> {
 const NavButton = ({
   children,
   selected = false,
-  ...HTMLAnchorElement
+  ...LinkProps
 }: INavButton) => {
   return (
-    <a
-      {...HTMLAnchorElement}
+    <Link
+      {...LinkProps}
       className={`${styles["navButton"]} ${
         selected ? styles["navButton--selected"] : styles["navButton--inactive"]
       }`}
@@ -28,7 +29,7 @@ const NavButton = ({
       >
         {children}
       </span>
-    </a>
+    </Link>
   );
 };
 export default NavButton;
