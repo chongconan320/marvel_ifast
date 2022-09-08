@@ -1,5 +1,5 @@
 .navButton {
-  padding: 0.5em 1em;
+  padding: 0.4em 0.5em;
   border: 0;
   border-radius: 5px;
   text-decoration: none;
@@ -39,8 +39,4 @@
 }
 .navButton:hover .navButton__label::after {
   width: 100%;
-}
-
-.navButton--selected {
-  background-color: rgb(var(--primary));
 }
