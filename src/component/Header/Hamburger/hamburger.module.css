@@ -1,0 +1,38 @@
+.hamburger {
+  position: relative;
+  width: 2rem;
+  height: 15px;
+  cursor: pointer;
+}
+
+.dash {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(var(--black));
+  transition: top 200ms ease-in-out 350ms, bottom 200ms ease-in-out 350ms,
+    transform 350ms ease-in-out;
+
+  transform-origin: center;
+}
+
+.dash:first-child {
+  top: 0;
+}
+.dash:last-child {
+  bottom: 0;
+}
+
+.dash--selected {
+  transition: top 200ms ease-in-out, bottom 200ms ease-in-out,
+    transform 350ms ease-in-out 200ms;
+}
+
+.dash--selected:first-child {
+  top: calc(50% - 1px);
+  transform: rotate(45deg);
+}
+.dash--selected:last-child {
+  bottom: calc(50% - 1px);
+  transform: rotateZ(-45deg);
+}
