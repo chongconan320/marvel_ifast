@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { HTMLAttributes } from "react";
 
 import styles from "./hamburger.module.css";
 
-const Hamburger = () => {
-  const [isToggle, setIsToggle] = useState(false);
+interface IHamburger extends HTMLAttributes<HTMLDivElement> {
+  isExpanded: boolean;
+}
 
-  const onToggle = () => {
-    setIsToggle((prev) => !prev);
-  };
+const Hamburger = ({ isExpanded, onClick }: IHamburger) => {
   return (
-    <div className={styles["hamburger"]} onClick={onToggle}>
+    <div className={styles["hamburger"]} onClick={onClick}>
       <div
-        className={`${styles["dash"]} ${isToggle && styles["dash--selected"]}`}
+        className={`${styles["dash"]} ${
+          isExpanded && styles["dash--selected"]
+        }`}
       />
       <div
-        className={`${styles["dash"]} ${isToggle && styles["dash--selected"]}`}
+        className={`${styles["dash"]} ${
+          isExpanded && styles["dash--selected"]
+        }`}
       />
     </div>
   );
