@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import styles from "./overlay.module.css";
 
 interface IOverlay {
@@ -7,6 +7,13 @@ interface IOverlay {
 }
 
 const Overlay = ({ isExpanded, children }: IOverlay) => {
+  useEffect(() => {
+    if (isExpanded) {
+      document.body.style.overflow = "hidden";
+      return;
+    }
+    document.body.style.overflow = "auto";
+  }, [isExpanded]);
   return (
     <div
       className={`${styles["overlay"]} ${
