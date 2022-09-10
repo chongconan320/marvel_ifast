@@ -4,9 +4,10 @@ import styles from "./overlay.module.css";
 interface IOverlay {
   isExpanded: boolean;
   children?: ReactNode;
+  fullScreen?: boolean;
 }
 
-const Overlay = ({ isExpanded, children }: IOverlay) => {
+const Overlay = ({ isExpanded, children, fullScreen = false }: IOverlay) => {
   useEffect(() => {
     if (isExpanded) {
       document.body.style.overflow = "hidden";
@@ -17,8 +18,8 @@ const Overlay = ({ isExpanded, children }: IOverlay) => {
   return (
     <div
       className={`${styles["overlay"]} ${
-        isExpanded ? styles["overlay--visible"] : styles["overlay--hidden"]
-      }`}
+        fullScreen && styles["overlay--full-screen"]
+      } ${isExpanded ? styles["overlay--visible"] : styles["overlay--hidden"]}`}
     >
       {children}
     </div>
