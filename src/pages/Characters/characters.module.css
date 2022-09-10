@@ -1,6 +1,5 @@
 .grid {
   display: grid;
-  margin-top: 2em;
   grid-template-columns: auto;
   flex-wrap: wrap;
   column-gap: 0.2em;
@@ -16,6 +15,15 @@
   justify-content: center;
   align-items: center;
   z-index: -1;
+}
+.collections__total {
+  display: block;
+  font-size: 1.5rem;
+  margin: 1.5em 0;
+}
+.collections__total > span {
+  font-weight: bold;
+  color: rgb(var(--primary));
 }
 
 @media screen and (min-width: 425px) {

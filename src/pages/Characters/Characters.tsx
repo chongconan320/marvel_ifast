@@ -28,21 +28,28 @@ const Characters = () => {
         </div>
       )}
       {status === Status.complete && (
-        <div className={styles["grid"]}>
-          {characters!.data.results.map((character) => {
-            const { id, name } = character;
-            return (
-              <Avatar
-                key={id}
-                id={id}
-                name={name}
-                thumbnail={
-                  character.thumbnail.path + "." + character.thumbnail.extension
-                }
-              />
-            );
-          })}
-        </div>
+        <>
+          <span className={styles["collections__total"]}>
+            Total: <span>{characters!.data.total}</span>
+          </span>
+          <div className={styles["grid"]}>
+            {characters!.data.results.map((character) => {
+              const { id, name } = character;
+              return (
+                <Avatar
+                  key={id}
+                  id={id}
+                  name={name}
+                  thumbnail={
+                    character.thumbnail.path +
+                    "." +
+                    character.thumbnail.extension
+                  }
+                />
+              );
+            })}
+          </div>
+        </>
       )}
       {status === Status.error && "error "}
     </Collections>
