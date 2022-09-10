@@ -22,12 +22,12 @@ const Characters = () => {
   );
   return (
     <Collections>
-      {status === Status.complete && (
+      {status === Status.idle && (
         <div className={styles["collections__loading"]}>
           <SpinningWeb />
         </div>
       )}
-      {status === Status.idle && (
+      {status === Status.complete && (
         <div className={styles["grid"]}>
           {characters!.data.results.map((character) => {
             const { id, name } = character;
