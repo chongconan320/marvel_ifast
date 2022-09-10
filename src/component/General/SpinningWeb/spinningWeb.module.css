@@ -1,0 +1,24 @@
+.spinning-web {
+  text-align: center;
+}
+
+.spinning-web__web {
+  display: block;
+  width: min(100%, 250px);
+  animation: spinning 1750ms linear infinite;
+}
+.spinning-web__label {
+  display: block;
+  width: 100%;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
