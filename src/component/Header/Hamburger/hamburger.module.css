@@ -3,6 +3,7 @@
   width: 1.5rem;
   height: 15px;
   cursor: pointer;
+  z-index: 99;
 }
 
 .dash {
