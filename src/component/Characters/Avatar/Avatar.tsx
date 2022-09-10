@@ -1,13 +1,32 @@
 import styles from "./avatar.module.css";
-import Image_CaptainAmerica from "assets/images/marvel.jpeg";
-
-const Avatar = () => {
+import ImageNotFound from "assets/images/marvel_logo.svg";
+interface IAvatar {
+  id: number;
+  name: string;
+  thumbnail: string;
+}
+const Avatar = ({ id, name, thumbnail }: IAvatar) => {
+  const src =
+    thumbnail ===
+    "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+      ? ""
+      : thumbnail;
   return (
     <div className={styles["avatar"]}>
-      <figure className={styles["avatar__figure"]}>
-        <img alt={"Captain America"} src={Image_CaptainAmerica} />{" "}
-      </figure>
-      <span className={styles["avatar__name"]}>Captain America</span>
+      {src === "" && (
+        <figure
+          className={`${styles["avatar__figure"]} ${styles["avatar__figure--not-found"]}`}
+        >
+          <img alt={`Character ${id}`} src={ImageNotFound} />
+        </figure>
+      )}
+      {src !== "" && (
+        <figure className={styles["avatar__figure"]}>
+          <img alt={`Character ${id}`} src={src} />
+        </figure>
+      )}
+
+      <span className={styles["avatar__name"]}>{name}</span>
     </div>
   );
 };
