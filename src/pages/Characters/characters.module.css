@@ -1,0 +1,33 @@
+.grid {
+  display: grid;
+  margin-top: 2em;
+  grid-template-columns: auto;
+  flex-wrap: wrap;
+  column-gap: 0.2em;
+  row-gap: 2em;
+}
+.collections__loading {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+@media screen and (min-width: 425px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .grid {
+    margin: auto;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-flow: row;
+  }
+}
