@@ -1,0 +1,19 @@
+.avatar {
+  text-align: center;
+  cursor: pointer;
+}
+.avatar__figure {
+  margin: 0;
+}
+.avatar__figure > img {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 1.5em;
+}
+.avatar__name {
+  display: block;
+  text-transform: uppercase;
+  word-wrap: nowrap;
+  font-size: 1.25rem;
+  margin-top: 0.3em;
+}
