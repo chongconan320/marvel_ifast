@@ -1,30 +1,30 @@
 import styles from "./collections.module.css";
-import { ChangeEvent, ReactNode, useEffect, useState } from "react";
+import { ChangeEvent, ReactNode, useState } from "react";
 import FloatingCircle from "./FloatingCircle";
 import Overlay from "component/Header/Overlay";
 import SearchBar from "../SearchBar";
 
 interface ICollection {
   children: ReactNode;
+  searchingInput: string;
+  onSearchingInput: (e: ChangeEvent<HTMLInputElement>) => void;
+  onSearchClickedCallback: () => void;
 }
 
-const Collection = ({ children }: ICollection) => {
+const Collection = ({
+  children,
+  searchingInput,
+  onSearchingInput,
+  onSearchClickedCallback,
+}: ICollection) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [searchingInput, setSearchingInput] = useState("");
   const onOverlayToggle = () => {
     setIsExpanded((prev) => !prev);
   };
-  const onSearchingInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchingInput(e.target.value);
-  };
   const onSearchClicked = () => {
     setIsExpanded(false);
+    onSearchClickedCallback();
   };
-
-  useEffect(() => {
-    setSearchingInput("");
-  }, [isExpanded]);
-
   return (
     <main className={styles["collections"]}>
       <Overlay isExpanded={isExpanded} fullScreen>
@@ -38,7 +38,7 @@ const Collection = ({ children }: ICollection) => {
             <SearchBar value={searchingInput} onChange={onSearchingInput} />
           </div>
           <button
-            className={styles["overlay-content__button"]}
+            className={`${styles["search-button"]} ${styles["search-button--mobile"]} `}
             onClick={onSearchClicked}
           >
             Search
@@ -50,7 +50,13 @@ const Collection = ({ children }: ICollection) => {
       </div>
       <div className={styles["collections__content"]}>
         <div className={styles["content__search-bar"]}>
-          <SearchBar value={searchingInput} onChange={onSearchingInput} />
+          <SearchBar value={searchingInput} onChange={onSearchingInput} />{" "}
+          <button
+            className={`${styles["search-button"]} ${styles["search-button--desktop"]}`}
+            onClick={onSearchClicked}
+          >
+            SEARCH
+          </button>
         </div>
         {children}
       </div>

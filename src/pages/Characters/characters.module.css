@@ -26,6 +26,32 @@
   color: rgb(var(--primary));
 }
 
+.collections__pagination {
+  padding: 1.5em 0;
+}
+
+.collections__not-found {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: -1;
+}
+.not-found__marvel-logo {
+  width: 50%;
+  height: fit-content;
+}
+.collections__not-found > span {
+  display: block;
+  margin-top: 1.5em;
+  font-size: 1.5rem;
+  padding: 0 0.5em;
+}
 @media screen and (min-width: 425px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
