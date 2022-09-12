@@ -22,7 +22,7 @@ const navigation = [
   {
     label: "Comics",
     link: "/comics",
-    included: [/\/comics$/g, /^\/comics\/\d+$/g],
+    included: [/^\/comics$/, /^\/comics\/\d+$/],
   },
 ];
 
@@ -66,22 +66,27 @@ const Header = () => {
           <ul
             className={`${styles["nav__list"]} ${styles["nav__list--mobile"]}`}
           >
-            {navigation.map(({ label, link }) => (
-              <Link
-                key={link}
-                to={link}
-                onClick={onToggle}
-                className={`${styles["nav__link"]} ${
-                  pathname === link && styles["nav__link--selected"]
-                }`}
-              >
-                <li>{label}</li>
-              </Link>
-            ))}
+            {navigation.map(({ label, link, included }) => {
+              const selected = included.some((expression) => {
+                return expression.test(pathname);
+              });
+              return (
+                <Link
+                  key={link}
+                  to={link}
+                  onClick={onToggle}
+                  className={`${styles["nav__link"]} ${
+                    selected && styles["nav__link--selected"]
+                  }`}
+                >
+                  <li>{label}</li>
+                </Link>
+              );
+            })}
           </ul>
         </div>
       </Overlay>
-      <Link to={"/"}>
+      <Link to={"/"} className={styles["header__logo"]}>
         <ImageMarvelLogo className={styles["header__logo"]} />
       </Link>
       <nav className={styles["header__nav"]}>
