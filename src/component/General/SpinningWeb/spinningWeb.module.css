@@ -1,10 +1,10 @@
 .spinning-web {
   text-align: center;
+  width: min(100%, 250px);
 }
 
 .spinning-web__web {
   display: block;
-  width: min(100%, 250px);
   animation: spinning 1750ms linear infinite;
 }
 .spinning-web__label {
