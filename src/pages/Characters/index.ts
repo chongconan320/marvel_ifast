@@ -1,3 +1,4 @@
 import Characters from "./Characters";
+import CharacterDetails from "./CharacterDetails";
 
-export default Characters;
+export { Characters, CharacterDetails };

@@ -3,6 +3,8 @@
   text-align: center;
   cursor: pointer;
   flex-direction: column;
+  text-decoration: none;
+  color: rgb(var(--black));
 }
 .avatar__figure {
   margin: 0;

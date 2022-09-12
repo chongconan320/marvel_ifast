@@ -1,0 +1,11 @@
+.comic {
+  margin: 0;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.comic > img {
+  width: 100%;
+  height: 100%;
+}

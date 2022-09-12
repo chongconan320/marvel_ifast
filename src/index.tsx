@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import Characters from "pages/Characters";
+import { Characters, CharacterDetails } from "pages/Characters";
 
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Header from "component/Header";
@@ -22,7 +22,9 @@ root.render(
           </>
         }
       >
-        <Route path="/characters" element={<Characters />} />
+        <Route index={true} element={<Characters />} />
+        <Route path="/:id" element={<CharacterDetails />} />
+
         <Route path="/comics" element={"comics"} />
         <Route path="/creators" element={"creators"} />
       </Route>

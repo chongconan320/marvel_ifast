@@ -1,12 +1,4 @@
-export interface IResponse {
-  code: number;
-  status: string;
-  copyright: string;
-  attributionText: string;
-  attributionHTML: string;
-  etag: string;
-}
-
+import { IResponse } from "./api";
 export interface ICharacters extends IResponse {
   data: {
     offset: number;
@@ -79,7 +71,7 @@ export interface ICharacters extends IResponse {
     ];
   };
 }
-export interface Character extends IResponse {
+export interface ICharacter extends IResponse {
   data: {
     offset: number;
     limit: number;

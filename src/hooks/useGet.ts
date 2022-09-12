@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Request } from "types/api";
 import md5 from "md5";
-import { IResponse } from "types/characters";
+import { IResponse } from "types/api";
 
 const API_PREFIX = "https://gateway.marvel.com/v1/public";
 const PRIVATE_KEY = process.env.REACT_APP_PRIVATE_KEY;
@@ -14,7 +14,7 @@ enum Status {
   error,
 }
 
-const useGet = <T extends IResponse, R extends Request>(
+const useGet = <T extends IResponse, R extends Request = {}>(
   url: string,
   options?: R
 ): [T | null, Status] => {

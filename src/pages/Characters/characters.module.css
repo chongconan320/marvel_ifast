@@ -5,17 +5,7 @@
   column-gap: 0.2em;
   row-gap: 2em;
 }
-.collections__loading {
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  z-index: -1;
-}
+
 .collections__total {
   display: block;
   font-size: 1.5rem;

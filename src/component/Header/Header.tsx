@@ -16,7 +16,7 @@ import Overlay from "./Overlay";
 const navigation = [
   {
     label: "Characters",
-    link: "/characters",
+    link: "/",
   },
   {
     label: "Comics",
@@ -84,7 +84,9 @@ const Header = () => {
           </ul>
         </div>
       </Overlay>
-      <ImageMarvelLogo className={styles["header__logo"]} />
+      <Link to={"/"}>
+        <ImageMarvelLogo className={styles["header__logo"]} />
+      </Link>
       <nav className={styles["header__nav"]}>
         <div className={styles["header__hamburger"]}>
           <Hamburger isExpanded={isExpanded} onClick={onToggle} />

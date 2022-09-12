@@ -1,12 +1,12 @@
 import useGet, { Status } from "hooks/useGet";
 import { Avatar } from "component/Characters";
 import styles from "./characters.module.css";
-import { Collections, Pagination, SearchBar } from "component/General";
-import SpinningWeb from "component/General/SpinningWeb";
+import { Collections, Pagination, Fetching } from "component/General";
 import { ChangeEvent, useEffect, useState } from "react";
 import { ICharacters } from "types/characters";
 import { ICharactersRequest } from "types/api";
 import { ReactComponent as MarvelLogo } from "assets/images/marvel_logo.svg";
+import { useParams } from "react-router-dom";
 
 const LIMIT = 8;
 
@@ -48,11 +48,7 @@ const Characters = () => {
       onSearchClickedCallback={onSearchClicked}
       onSearchingInput={onSearchingInput}
     >
-      {status === Status.idle && (
-        <div className={styles["collections__loading"]}>
-          <SpinningWeb />
-        </div>
-      )}
+      {status === Status.idle && <Fetching />}
       {status === Status.complete && (
         <>
           {characters!.data.total === 0 && (
@@ -74,6 +70,7 @@ const Characters = () => {
                       key={id}
                       id={id}
                       name={name}
+                      to={`/${id}`}
                       thumbnail={
                         character.thumbnail.path +
                         "." +
