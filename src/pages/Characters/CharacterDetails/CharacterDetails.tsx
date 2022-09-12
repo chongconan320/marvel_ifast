@@ -1,5 +1,4 @@
-import Comic from "component/Characters/Comic";
-import { Fetching } from "component/General";
+import { Fetching, Comic } from "component/General";
 import useGet, { Status } from "hooks/useGet";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { ICharacters } from "types/characters";
@@ -11,6 +10,7 @@ const CharacterDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [character, status] = useGet<ICharacters>(`characters/${id}`);
+
   const src =
     character?.data.results[0].thumbnail.path +
     "." +

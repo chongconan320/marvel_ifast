@@ -1,11 +1,7 @@
-import useGet, { Status } from "hooks/useGet";
-import { Avatar } from "component/Characters";
-import styles from "./comics.module.css";
-import { Collections, Pagination, Fetching } from "component/General";
+import useGet from "hooks/useGet";
+import { Collections } from "component/General";
 import { ChangeEvent, useEffect, useState } from "react";
-import { ICharacters } from "types/characters";
-import { ICharactersRequest, IComicsRequest } from "types/api";
-import { ReactComponent as MarvelLogo } from "assets/images/marvel_logo.svg";
+import { IComicsRequest } from "types/api";
 import { Comics as IComics } from "types/comics";
 import List from "component/General/List/List";
 

@@ -18,6 +18,7 @@ const ComicDetails = () => {
   const onNavigateBack = () => {
     navigate(-1);
   };
+
   return (
     <main className={styles["comic-details"]}>
       {status === Status.idle && <Fetching />}
