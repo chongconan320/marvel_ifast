@@ -1,0 +1,37 @@
+.comic-details {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+}
+.comic-details__icon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.comic-details__icon--arrow-left {
+  margin-bottom: 2em;
+}
+
+.comic-details__thumbnail {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0;
+}
+.comic-details__thumbnail > figcaption {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 0.8em;
+}
+
+.comic-details__thumbnail > img {
+  display: block;
+  width: 100%;
+  max-width: 425px;
+  margin: auto;
+}
+
+.comic-details__description {
+  font-size: 1.2rem;
+}

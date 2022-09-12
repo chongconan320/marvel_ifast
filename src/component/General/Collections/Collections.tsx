@@ -3,6 +3,7 @@ import { ChangeEvent, ReactNode, useState } from "react";
 import FloatingCircle from "./FloatingCircle";
 import Overlay from "component/Header/Overlay";
 import SearchBar from "../SearchBar";
+import { IResponse } from "types/api";
 
 interface ICollection {
   children: ReactNode;

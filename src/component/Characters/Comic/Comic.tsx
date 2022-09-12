@@ -1,5 +1,5 @@
 import useGet, { Status } from "hooks/useGet";
-import { Comic as ComicResponse } from "types/comics";
+import { Comics as IComics } from "types/comics";
 import styles from "./comic.module.css";
 
 interface IComic {
@@ -8,7 +8,7 @@ interface IComic {
 }
 
 const Comic = ({ id, name }: IComic) => {
-  const [comic, status] = useGet<ComicResponse>(`/comics/${id}`);
+  const [comic, status] = useGet<IComics>(`/comics/${id}`);
 
   return (
     <figure className={styles["comic"]}>

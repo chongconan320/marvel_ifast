@@ -17,14 +17,12 @@ const navigation = [
   {
     label: "Characters",
     link: "/",
+    included: [/^\/$/, /^\/\d+$/],
   },
   {
     label: "Comics",
     link: "/comics",
-  },
-  {
-    label: "Creators",
-    link: "/creators",
+    included: [/\/comics$/g, /^\/comics\/\d+$/g],
   },
 ];
 
@@ -35,7 +33,6 @@ const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(0);
-
   useEffect(() => {
     const headerEl = headerRef.current;
     if (headerEl === null) return;
@@ -95,13 +92,18 @@ const Header = () => {
         <ul
           className={`${styles["nav__list"]} ${styles["nav__list--desktop"]}`}
         >
-          {navigation.map(({ label, link }) => (
-            <li key={link}>
-              <NavButton to={link} selected={link === pathname}>
-                {label}
-              </NavButton>
-            </li>
-          ))}
+          {navigation.map(({ label, link, included }) => {
+            const selected = included.some((expression) => {
+              return expression.test(pathname);
+            });
+            return (
+              <li key={link}>
+                <NavButton to={link} selected={selected}>
+                  {label}
+                </NavButton>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </header>

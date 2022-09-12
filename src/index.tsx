@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { Characters, CharacterDetails } from "pages/Characters";
+import { Comics, ComicDetails } from "pages/Comics";
 
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Header from "component/Header";
@@ -25,7 +26,9 @@ root.render(
         <Route index={true} element={<Characters />} />
         <Route path="/:id" element={<CharacterDetails />} />
 
-        <Route path="/comics" element={"comics"} />
+        <Route path="/comics" element={<Comics />} />
+        <Route path="/comics/:id" element={<ComicDetails />} />
+
         <Route path="/creators" element={"creators"} />
       </Route>
     </Routes>

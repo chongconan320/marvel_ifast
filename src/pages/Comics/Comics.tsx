@@ -1,25 +1,25 @@
-import useGet from "hooks/useGet";
-import { Collections } from "component/General";
+import useGet, { Status } from "hooks/useGet";
+import { Avatar } from "component/Characters";
+import styles from "./comics.module.css";
+import { Collections, Pagination, Fetching } from "component/General";
 import { ChangeEvent, useEffect, useState } from "react";
 import { ICharacters } from "types/characters";
-import { ICharactersRequest } from "types/api";
-
+import { ICharactersRequest, IComicsRequest } from "types/api";
+import { ReactComponent as MarvelLogo } from "assets/images/marvel_logo.svg";
+import { Comics as IComics } from "types/comics";
 import List from "component/General/List/List";
 
 const LIMIT = 8;
 
-const Characters = () => {
+const Comics = () => {
   const [page, setPage] = useState(1);
-  const [options, setOptions] = useState<ICharactersRequest>({
+  const [options, setOptions] = useState<IComicsRequest>({
     offset: (page - 1) * LIMIT,
     limit: LIMIT,
-    nameStartsWith: undefined,
+    titleStartsWith: undefined,
   });
 
-  const [characters, status] = useGet<ICharacters, ICharactersRequest>(
-    "characters",
-    options
-  );
+  const [comics, status] = useGet<IComics, IComicsRequest>("comics", options);
 
   const [searchingInput, setSearchingInput] = useState("");
 
@@ -29,7 +29,7 @@ const Characters = () => {
   const onSearchClicked = () => {
     setOptions((prev) => ({
       ...prev,
-      nameStartsWith: searchingInput === "" ? undefined : searchingInput,
+      titleStartsWith: searchingInput === "" ? undefined : searchingInput,
       offset: 0,
     }));
   };
@@ -39,7 +39,6 @@ const Characters = () => {
       return { ...prev, offset: (page - 1) * LIMIT };
     });
   }, [page]);
-
   return (
     <Collections
       searchingInput={searchingInput}
@@ -48,13 +47,13 @@ const Characters = () => {
     >
       <List
         status={status}
-        data={characters}
+        data={comics}
         limit={LIMIT}
         page={page}
         setPage={setPage}
-        to={"/"}
+        to={"/comics/"}
       />
     </Collections>
   );
 };
-export default Characters;
+export default Comics;

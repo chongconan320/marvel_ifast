@@ -2,7 +2,7 @@ import Comic from "component/Characters/Comic";
 import { Fetching } from "component/General";
 import useGet, { Status } from "hooks/useGet";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { ICharacter } from "types/characters";
+import { ICharacters } from "types/characters";
 import styles from "./characterDetails.module.css";
 import ImageNotFound from "assets/images/marvel_logo.svg";
 import { ReactComponent as IconArrowLeft } from "assets/icons/arrow-left.svg";
@@ -10,7 +10,7 @@ import { ReactComponent as IconArrowLeft } from "assets/icons/arrow-left.svg";
 const CharacterDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [character, status] = useGet<ICharacter>(`characters/${id}`);
+  const [character, status] = useGet<ICharacters>(`characters/${id}`);
   const src =
     character?.data.results[0].thumbnail.path +
     "." +
