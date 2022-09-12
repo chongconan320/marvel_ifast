@@ -9,7 +9,6 @@ interface IComic {
 
 const Comic = ({ id, name }: IComic) => {
   const [comic, status] = useGet<IComics>(`/comics/${id}`);
-
   return (
     <figure className={styles["comic"]}>
       {status === Status.complete && (
